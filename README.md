@@ -22,6 +22,21 @@
 + control bus: CE / OE / WE
 + VPP signal supported
 
+# ROM select switch
++ A20, A21, A22の制御スイッチがあります
+	+ A20 ... 8Mbit単位切り替え
+	+ A21 ... 16Mbit単位切り替え
+	+ A22 ... 32Mbit単位切り替え（EPROM切り替え）
++ FREEにするとそのアドレスビットの制御を機器側に委ねます
++ FIXにするとそのアドレスビットの制御をHIGH/LOWスイッチに委ねます
++ 使用例
+	+ 1つの64MbitのROMとして基板を使いたい
+		+ A20, A21, A22をすべてFREEにする
+	+ 4つの16MbitのROMとして基板を使いたい
+		+ A20をFREEにする
+		+ A21, A22はFIXにする
+			+ 2つのHIGH/LOWスイッチで4分割したROMの選択を行う
+
 # 使用例
 ![connection](cart.jpg)
 

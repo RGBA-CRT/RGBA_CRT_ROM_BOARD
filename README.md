@@ -3,18 +3,18 @@
 ![rev2 pcb](rev2/27c322_rev2_wired.png)
 
 # about
-+ 27C322��40�s���̃s���w�b�_�Ɉ����o����ł�
-+ ���g���R���V���[�}�Q�[���@�⃌�g���R���s���[�^�ł̎g�p��z�肵�Ă��܂�
-+ �����o�����s���w�b�_�ɂ�IDC 40�s�����{���P�[�u����ڑ����܂�
-	+ IDE�P�[�u���i40�c, �S�s������������Ă�����́j�𗬗p�ł�
-+ ���̑�
-	+ �f�[�^�o�X��8bit�ɕϊ�����܂�
-	+ 27C322��2�g����64Mbit�ɑΉ�
-	+ ROM�̃Z���N�g�X�C�b�`����
-+ ���̊�ɑΉ�����ROM���C�^�[�͂�����
++ 27C322を40ピンのピンヘッダに引き出す基板です
++ レトロコンシューマゲーム機やレトロコンピュータでの使用を想定しています
++ 引き出したピンヘッダにはIDC 40ピンリボンケーブルを接続します
+	+ IDEケーブル（40芯, 全ピンが結線されているもの）が使用可能です
++ その他
+	+ データバスは8bitに変換されます
+	+ 27C322を2つ使って64Mbitに対応
+	+ ROMのセレクトスイッチ搭載
++ この基板に対応したROMライターはこちら
 	+ https://github.com/RGBA-CRT/FT232H-EPROM-Prog
 
-# pinout of 40 PIN ROM Interface
+# PIN ROM Interface pinout
 ![pinout 8bit](pinout_8bit.png)
 
 + data bus: 8bit
@@ -23,29 +23,29 @@
 + VPP signal supported
 
 # ROM select switch
-+ A20, A21, A22�̐���X�C�b�`������܂�
-	+ A20 ... 8Mbit�P�ʐ؂�ւ�
-	+ A21 ... 16Mbit�P�ʐ؂�ւ�
-	+ A22 ... 32Mbit�P�ʐ؂�ւ��iEPROM�؂�ւ��j
-+ FREE�ɂ���Ƃ��̃A�h���X�r�b�g�̐�����@�푤�Ɉς˂܂�
-+ FIX�ɂ���Ƃ��̃A�h���X�r�b�g�̐����HIGH/LOW�X�C�b�`�Ɉς˂܂�
-+ �g�p��
-	+ 1��64Mbit��ROM�Ƃ��Ċ���g������
-		+ A20, A21, A22�����ׂ�FREE�ɂ���
-	+ 4��16Mbit��ROM�Ƃ��Ċ���g������
-		+ A20��FREE�ɂ���
-		+ A21, A22��FIX�ɂ���
-			+ 2��HIGH/LOW�X�C�b�`��4��������ROM�̑I�����s��
++ A20, A21, A22の制御スイッチがあります
+	+ A20 ... 8Mbit単位切り替え
+	+ A21 ... 16Mbit単位切り替え
+	+ A22 ... 32Mbit単位切り替え（EPROM切り替え）
++ FREEにするとそのアドレスビットの制御を機器側に委ねます
++ FIXにするとそのアドレスビットの制御をHIGH/LOWスイッチに委ねます
++ 使用例
+	+ 1つの64MbitのROMとして基板を使いたい
+		+ A20, A21, A22をすべてFREEにする
+	+ 4つの16MbitのROMとして基板を使いたい
+		+ A20をFREEにする
+		+ A21, A22はFIXにする
+			+ 2つのHIGH/LOWスイッチで4分割したROMの選択を行う
 
-# �g�p��
+# 使用例
 ![connection](cart.jpg)
 
 # other
-+ SNES/SFC��ExHiROM�Ƃ��Ďg�p����ꍇ�́AROM�Ă����Ǝ��@���s����ROM L, ROM H���t�Ɏ��t����K�v������܂��B
-	+ ROM���C�^�[�̓t�@�C���̏��̒ʂ莟�̂悤�ɏ������݂܂�
++ SNES/SFCのExHiROMとして使用する場合は、ROM焼き時と実機実行時でROM L, ROM Hを逆に取り付ける必要があります。
+	+ ROMライターはファイルの順の通り次のように書き込みます
 		+ ROM L: SNES BANK $C0-$FF
 		+ ROM H: SNES BANK $40-$7F
-	+ ����������SFC�̃J�[�g���b�W�Ƃ��Ďg���Ƃ��ɂ�ROM L��ROM H���t�ɂ���K�v������܂�
-+ ���܂�
-	+ ����40 PIN ROM Interface�ɑΉ��������j�o�[�T�����
+	+ したがってSFCのカートリッジとして使うときにはROM LとROM Hを逆にする必要があります
++ おまけ
+	+ この40 PIN ROM Interfaceに対応したユニバーサル基板
 	![univ pcb](universal/universal_2.png)

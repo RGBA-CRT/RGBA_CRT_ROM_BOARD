@@ -4,7 +4,7 @@
 + low bytes are mapped to 0x000000-0x1FFFFF
 + high bytes are mapped to 0x200000-0x3FFFFF
 
-![img](rev1/27c322.png)
+![img](27c322.png)
 
 # garber
-[27c322Bord.zip](rev1/27c322Bord.zip)
+[27c322Bord.zip](27c322Bord.zip)

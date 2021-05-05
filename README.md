@@ -1,5 +1,6 @@
 # RGBA_CRT ROM BOARD
 + 27C322 64Mbit ROM board for 8bit databus system
+**※まだ不安定です**
 ![rev2 pcb](rev2/27c322_rev2_wired.png)
 
 # about
